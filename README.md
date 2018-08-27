@@ -16,9 +16,9 @@ npm run dev
 
 ## Authors
 
-|  ![João Cavalcante](https://avatars1.githubusercontent.com/u/13931503?v=3&s=150)    | ![Leonardo Turbiani](https://avatars3.githubusercontent.com/u/1368287?v=3&s=150)
-|-------------|--------|
-|[João Cavalcante](https://github.com/kavalcante/)| [Leonardo Turbiani](https://github.com/turbiani/) |
+|  ![João Cavalcante](https://avatars1.githubusercontent.com/u/13931503?v=3&s=150)    | ![Leonardo Turbiani](https://avatars3.githubusercontent.com/u/1368287?v=3&s=150) | ![Helen Dias](https://avatars0.githubusercontent.com/u/19653346?s=150&v=3)
+|-------------|--------|--------|
+|[João Cavalcante](https://github.com/kavalcante/)| [Leonardo Turbiani](https://github.com/turbiani/) | [Helen Dias](https://github.com/HelenDias) |
 
 See also the list of [contributors](https://github.com/Cotabox/apollo-server-graphql-boilerplate/contributors) who participated in this project.
 
