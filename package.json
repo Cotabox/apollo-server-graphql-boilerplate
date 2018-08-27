@@ -1,0 +1,55 @@
+{
+  "name": "presente-palavras-api",
+  "version": "1.0.0",
+  "description": "API GraphQL from https://www.presenteempalavras.com.br/",
+  "main": "server.js",
+  "dependencies": {
+    "@sendgrid/mail": "^6.3.1",
+    "apollo-server-express": "^2.0.4",
+    "compression": "^1.7.3",
+    "eslint": "^4.19.1",
+    "express": "^4.16.3",
+    "graphql": "^0.13.2",
+    "graphql-tools": "^3.1.1",
+    "helmet": "^3.13.0",
+    "jsonwebtoken": "^8.3.0",
+    "lodash": "^4.17.10",
+    "moment": "^2.22.2",
+    "mongoose": "^5.2.9",
+    "ramda": "^0.25.0",
+    "uuid": "^3.3.2"
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.2.6",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-loader": "^2.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "husky": "^0.14.3"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "export NODE_ENV=dev && nodemon src/app/server.js",
+    "production": "export NODE_ENV=prod && nodemon src/app/server.js",
+    "lint": "./node_modules/.bin/eslint ./src/app/**/*.js",
+    "precommit": "npm run lint",
+    "prepush": "npm run lint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Turbiani/presente-palavras-api.git"
+  },
+  "keywords": [
+    "graphql",
+    "presente",
+    "palavras",
+    "casamento",
+    "votos",
+    "javascript"
+  ],
+  "author": "HelenDias",
+  "license": "Copyright 2018 Presente em Palavras",
+  "bugs": {
+    "url": "https://github.com/Turbiani/presente-palavras-api/issues"
+  },
+  "homepage": "https://github.com/Turbiani/presente-palavras-api#readme"
+}
