@@ -1,4 +1,4 @@
-const { gql } = require('apollo-server-express');
+const { gql, ForbiddenError } = require('apollo-server-express');
 const FindUsers = require('../../../domain/use-cases/user/find-user/FindUsers');
 
 const typeDefs = gql`
@@ -17,7 +17,7 @@ const resolvers = {
         db: { UserPersistentModel },
         UserLogged,
       },
-    ) => FindUsers(data, { UserPersistentModel, UserLogged }),
+    ) => FindUsers(data, { UserPersistentModel, UserLogged, ForbiddenError }),
   },
 };
 
