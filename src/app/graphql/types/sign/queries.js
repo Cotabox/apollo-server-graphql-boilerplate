@@ -1,4 +1,4 @@
-const { gql } = require('apollo-server-express');
+const { gql, AuthenticationError } = require('apollo-server-express');
 const Authenticate = require('../../../domain/services/AuthenticateService');
 
 const typeDefs = gql`
@@ -16,7 +16,7 @@ const resolvers = {
       {
         db: { UserPersistentModel },
       },
-    ) => Authenticate.user(data, { UserPersistentModel }),
+    ) => Authenticate.user(data, { UserPersistentModel, AuthenticationError }),
   },
 };
 

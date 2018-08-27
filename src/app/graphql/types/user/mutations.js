@@ -1,4 +1,4 @@
-const { gql } = require('apollo-server-express');
+const { gql, UserInputError } = require('apollo-server-express');
 const CreateUser = require('../../../domain/use-cases/user/create-user/CreateUser');
 
 const typeDefs = gql`
@@ -22,8 +22,10 @@ const resolvers = {
         Logger,
       },
     ) => {
-      if (data.name === "" || data.email === "") {
-        throw new Error('Please inform name and email for create User')
+      if (data.name === '' || data.email === '') {
+        throw new UserInputError('Arguments invalid', {
+          invalidArgs: data.name === '' ? ['name'] : ['email'],
+        });
       }
       return CreateUser(data, { UserPersistentModel, Logger });
     },

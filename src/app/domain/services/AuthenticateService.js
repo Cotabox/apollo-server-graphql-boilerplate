@@ -1,4 +1,4 @@
-const dependencies = {
+const internalDependencies = {
   jwt: require('jsonwebtoken'),
   UserRepository: require('../../infrastructure/repository/UserRepository'),
   CreatePassword: require('../../utils/CreatePassword'),
@@ -6,33 +6,34 @@ const dependencies = {
 };
 
 class AuthenticateService {
-  static async user(data, injection) {
+  static async user(data, externalDependencies) {
     const {
+      AuthenticationError,
       UserPersistentModel,
       UserRepository,
       Logger,
       jwt,
       CreatePassword,
-    } = Object.assign({}, dependencies, injection);
-
-    const password = CreatePassword.make(data.password);
+    } = Object.assign({}, internalDependencies, externalDependencies);
 
     try {
-      const dataFinded = await new UserRepository(injection)
+      const password = CreatePassword.make(data.password);
+
+      const dataFinded = await new UserRepository(externalDependencies)
         .findUserByEmail(data.email, { UserPersistentModel });
 
       if (!dataFinded) {
         Logger.warn(`User ${data.email} not finded`);
-        throw new Error('Email or Password incorrect');
+        throw new AuthenticationError('Email or Password incorrect');
       } else if (password === dataFinded.password) {
-  
+
         const payload = {
           id: dataFinded._id,
           email: dataFinded.email,
           type: dataFinded.type,
           active: dataFinded.active,
         };
-  
+
         return {
           token: jwt.sign(payload, 'MyAP1@20185b560566a59bf52343d99da7-gr4phql'),
           user: {
@@ -43,19 +44,19 @@ class AuthenticateService {
           }
         };
       } else {
-        throw new Error('Email or Password incorrect');
+        throw new AuthenticationError('Email or Password incorrect');
       }
     } catch (e) {
-      throw new Error(e.message);
+      throw e;
     }
   }
 
-  static userFromToken({ id }, injection) {
+  static userFromToken({ id }, externalDependencies) {
     const {
       UserPersistentModel,
       UserRepository,
-    } = Object.assign({}, dependencies, injection);
-    return new UserRepository(injection)
+    } = Object.assign({}, internalDependencies, externalDependencies);
+    return new UserRepository(externalDependencies)
       .findUserById(id, { UserPersistentModel });
   }
 }

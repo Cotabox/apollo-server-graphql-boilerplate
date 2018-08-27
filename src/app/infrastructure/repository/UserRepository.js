@@ -19,10 +19,10 @@ class UserRepository {
     } catch (e) {
       Logger.error(e.message);
       if (e.code === 11000 || e.code === '11000') {
-        // USUARIO JÁ EXISTE,
+        // USER ALREADY EXISTS,
         throw new Error('User already exists');
       }
-      throw new Error(e);
+      throw e;
     }
   }
 
