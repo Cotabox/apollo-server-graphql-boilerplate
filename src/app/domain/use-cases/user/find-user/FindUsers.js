@@ -6,7 +6,7 @@ const FindUsers = (data, injection) => {
   const {
     ForbiddenError,
     UsersRepository,
-    UserLogged
+    UserLogged,
   } = Object.assign({}, dependencies, injection);
   if (!UserLogged) {
     throw new ForbiddenError('User must logged!')

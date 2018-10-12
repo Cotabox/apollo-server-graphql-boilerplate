@@ -12,6 +12,7 @@ function GenerateUsersMongoSchema(injection) {
       index: { unique: true },
     },
     password: String,
+    phone: String,
     type: {
       type: String,
       uppercase: true,
