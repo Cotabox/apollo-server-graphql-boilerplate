@@ -35,6 +35,7 @@ class AuthenticateService {
         };
 
         return {
+          // add your encryption key here
           token: jwt.sign(payload, 'MyAP1@20185b560566a59bf52343d99da7-gr4phql'),
           user: {
             id: dataFinded._id,

@@ -1,5 +1,5 @@
 const internalDependencies = {
-  Logger: require('../../utils/Logger.js'),
+  // add your internal dependencies here
 };
 
 class UserRepository {

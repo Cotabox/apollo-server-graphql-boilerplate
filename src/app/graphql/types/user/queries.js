@@ -5,7 +5,7 @@ const typeDefs = gql`
   extend type Query {
   """Query to find all active uses from application"""
     findUsers: [User]
-  }  
+  }
 `;
 
 const resolvers = {
@@ -16,8 +16,14 @@ const resolvers = {
       {
         db: { UserPersistentModel },
         UserLogged,
+        Logger,
       },
-    ) => FindUsers(data, { UserPersistentModel, UserLogged, ForbiddenError }),
+    ) => FindUsers(data, {
+      UserPersistentModel,
+      ForbiddenError,
+      UserLogged,
+      Logger,
+    }),
   },
 };
 
